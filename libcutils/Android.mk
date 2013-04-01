@@ -77,12 +77,8 @@ else
         abort_socket.c \
         fs.c \
         selector.c \
-        tztime.c \
         multiuser.c \
         zygote.c
-
-    commonHostSources += \
-        tzstrftime.c
 endif
 
 
@@ -134,7 +130,11 @@ ifeq ($(TARGET_ARCH_VARIANT),x86-atom)
 LOCAL_CFLAGS += -DHAVE_MEMSET16 -DHAVE_MEMSET32
 LOCAL_SRC_FILES += arch-x86/android_memset16.S arch-x86/android_memset32.S memory.c
 else # !x86-atom
+ifeq ($(TARGET_ARCH),mips)
+LOCAL_SRC_FILES += arch-mips/android_memset.c
+else # !mips
 LOCAL_SRC_FILES += memory.c
+endif # !mips
 endif # !x86-atom
 endif # !arm
 
@@ -166,3 +166,5 @@ LOCAL_SRC_FILES := str_parms.c hashmap.c memory.c
 LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))

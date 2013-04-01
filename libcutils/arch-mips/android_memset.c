@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006 The Android Open Source Project
+ * Copyright (C) 2012 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,18 @@
  * limitations under the License.
  */
 
-#ifndef _CUTILS_TZTIME_H
-#define _CUTILS_TZTIME_H
+#include <cutils/memory.h>
 
-// TODO: fix both callers to just include <bionic_time.h> themselves.
-#include <bionic_time.h>
+/* Use mips-assembler versions supplied by bionic/libc/arch-mips/string/memset.S: */
+void _memset16(uint16_t* dst, uint16_t value, size_t size);
+void _memset32(uint32_t* dst, uint32_t value, size_t size);
 
-#endif /* __CUTILS_TZTIME_H */ 
+void android_memset16(uint16_t* dst, uint16_t value, size_t size)
+{
+    _memset16(dst, value, size);
+}
 
+void android_memset32(uint32_t* dst, uint32_t value, size_t size)
+{
+    _memset32(dst, value, size);
+}
