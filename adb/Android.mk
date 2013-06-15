@@ -86,6 +86,7 @@ LOCAL_CFLAGS += -O2
 endif
 LOCAL_CFLAGS += -D_XOPEN_SOURCE -D_GNU_SOURCE
 LOCAL_MODULE := adb
+LOCAL_MODULE_TAGS := debug
 
 LOCAL_STATIC_LIBRARIES := libzipfile libunz libcrypto_static $(EXTRA_STATIC_LIBS)
 LOCAL_LDLIBS += -ldl
