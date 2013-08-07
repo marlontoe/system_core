@@ -88,6 +88,11 @@ typedef struct ucontext {
 
 #endif /* __BIONIC_HAVE_UCONTEXT_T */
 
+#else /* __BIONIC__ */
+
+// glibc has its own renaming of the Linux kernel's structures.
+#include <ucontext.h>
+
 #endif /* __ BIONIC__ */
 
 /* Unwind state. */
