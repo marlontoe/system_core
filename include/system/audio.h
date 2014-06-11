@@ -80,8 +80,7 @@ typedef enum {
                                           /* An example of remote presentation is Wifi Display */
                                           /*  where a dongle attached to a TV can be used to   */
                                           /*  play the mix captured by this audio source.      */
-    AUDIO_SOURCE_FM_RX               = 9,
-    AUDIO_SOURCE_FM_RX_A2DP          = 10,
+    AUDIO_SOURCE_FM_RADIO            = 9,
     AUDIO_SOURCE_CNT,
     AUDIO_SOURCE_MAX                 = AUDIO_SOURCE_CNT - 1,
     AUDIO_SOURCE_HOTWORD             = 1999, /* A low-priority, preemptible audio source for
@@ -494,10 +493,7 @@ enum {
     AUDIO_DEVICE_IN_USB_DEVICE            = AUDIO_DEVICE_BIT_IN | 0x1000,
     AUDIO_DEVICE_IN_ANC_HEADSET           = AUDIO_DEVICE_BIT_IN | 0x2000,
     AUDIO_DEVICE_IN_PROXY                 = AUDIO_DEVICE_BIT_IN | 0x4000,
-#ifdef QCOM_HARDWARE
-    AUDIO_DEVICE_IN_FM_RX                 = AUDIO_DEVICE_BIT_IN | 0x8000,
-    AUDIO_DEVICE_IN_FM_RX_A2DP            = AUDIO_DEVICE_BIT_IN | 0x10000,
-#endif
+    AUDIO_DEVICE_IN_FM_RADIO              = AUDIO_DEVICE_BIT_IN | 0x2000,
     AUDIO_DEVICE_IN_DEFAULT               = AUDIO_DEVICE_BIT_IN | AUDIO_DEVICE_BIT_DEFAULT,
 #endif
 
@@ -516,10 +512,7 @@ enum {
                                AUDIO_DEVICE_IN_USB_DEVICE |
                                AUDIO_DEVICE_IN_PROXY |
                                AUDIO_DEVICE_IN_ANC_HEADSET |
-#ifdef QCOM_HARDWARE
-                               AUDIO_DEVICE_IN_FM_RX |
-                               AUDIO_DEVICE_IN_FM_RX_A2DP |
-#endif
+                               AUDIO_DEVICE_IN_FM_RADIO |
                                AUDIO_DEVICE_IN_DEFAULT),
     AUDIO_DEVICE_IN_ALL_SCO = AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET,
 };
